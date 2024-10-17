@@ -1,5 +1,4 @@
 from dash import Dash, html, dcc, callback, Output, Input
-import dash_bootstrap_components as dbc
 import plotly.graph_objs as go
 import yfinance as yf
 import pandas as pd
@@ -15,8 +14,7 @@ def get_stock_data(symbols):
 
 app = Dash(__name__, external_stylesheets=['/assets/styles.css'])
 
-app.layout = dbc.Container(
-    [
+app.layout = [
         html.H1('Live S&P 500 Stock Dashboard', className='header'),
         dcc.Graph(id='live-stock-graph'),
         dcc.Interval(
@@ -24,9 +22,7 @@ app.layout = dbc.Container(
             interval=60*1000,
             n_intervals=0
         )
-    ],
-    fluid=True,
-)
+]
 
 @app.callback(
     Output('live-stock-graph', 'figure'),
