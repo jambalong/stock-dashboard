@@ -15,13 +15,13 @@ def get_stock_data(symbols):
 app = Dash(__name__, external_stylesheets=['/assets/styles.css'])
 
 app.layout = html.Div([
-        html.H1('Live S&P 500 Stock Dashboard', className='header'),
-        dcc.Graph(id='live-stock-graph'),
-        dcc.Interval(
-            id='interval-component',
-            interval=60*1000,
-            n_intervals=0
-        )
+    html.H1('Live S&P 500 Stock Dashboard', className='header'),
+    dcc.Graph(id='live-stock-graph'),
+    dcc.Interval(
+        id='interval-component',
+        interval=60*1000,
+        n_intervals=0
+    )
 ])
 
 @app.callback(
