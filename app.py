@@ -14,7 +14,7 @@ def get_stock_data(symbols):
 
 app = Dash(__name__, external_stylesheets=['/assets/styles.css'])
 
-app.layout = [
+app.layout = html.Div([
         html.H1('Live S&P 500 Stock Dashboard', className='header'),
         dcc.Graph(id='live-stock-graph'),
         dcc.Interval(
@@ -22,14 +22,14 @@ app.layout = [
             interval=60*1000,
             n_intervals=0
         )
-]
+])
 
 @app.callback(
     Output('live-stock-graph', 'figure'),
     [Input('interval-component', 'n_intervals')]
 )
 
-def update_graph(n_intervals):
+def update_graph(_):
     prices = get_stock_data(top_sp500)
 
     traces = []
